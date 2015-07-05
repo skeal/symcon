@@ -4,6 +4,7 @@
 # docker build -f Dockerfile -t blockmove/symcon .
 #
 #
+# 2015-07-05 : Added Volume "/usr/share/symcon"
 # 2015-07-02 : Init Project
 # -----------------------------------------------------------------------------
 
@@ -62,7 +63,8 @@ RUN \
 EXPOSE 3777 5544
 
 VOLUME \
-    /etc/symcon\
+    /etc/symcon \
+    /usr/share/symcon \
     /root/.symcon
 
 CMD ["/usr/bin/symcon_start.sh"]
