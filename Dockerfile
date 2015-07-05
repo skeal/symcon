@@ -35,7 +35,8 @@ RUN \
     
 RUN \
     mkdir /etc/symcon.org &&\
-    cp -R /etc/symcon/* /etc/symcon.org/
+    cp -R /etc/symcon/* /etc/symcon.org/ &&\
+    cp -R /usr/share/symcon/* /usr/symcon/symcon.org/
     
 #Clean-Up    
 RUN \
