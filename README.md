@@ -3,7 +3,7 @@ based on Ubuntu 14.04
 Volumes:
 - /etc/symcon
 - /usr/share/symcon
-- /root/.symcon
+- /root
 
 Exposes (Ports):
 - 3777
