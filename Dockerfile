@@ -5,6 +5,7 @@
 #
 #
 # 2015-07-05 : Added Volume "/usr/share/symcon"
+#              Added Copy "/usr/share/symcon"
 # 2015-07-02 : Init Project
 # -----------------------------------------------------------------------------
 
@@ -35,6 +36,7 @@ RUN \
     
 RUN \
     mkdir /etc/symcon.org &&\
+    mkdir /usr/share/symcon.org &&\
     cp -R /etc/symcon/* /etc/symcon.org/ &&\
     cp -R /usr/share/symcon/* /usr/symcon/symcon.org/
     
