@@ -36,10 +36,8 @@ RUN \
     apt-get -y install mc
     
 RUN \
-    mkdir /root.org &&\
     mkdir /etc/symcon.org &&\
     mkdir /usr/share/symcon.org &&\
-    cp -R /root/* /root.org/ &&\
     cp -R /etc/symcon/* /etc/symcon.org/ &&\
     cp -R /usr/share/symcon/* /usr/share/symcon.org/
     
