@@ -7,6 +7,8 @@
 # 2015-07-05 : Added Volume "/usr/share/symcon"
 #              Added Copy "/usr/share/symcon"
 #              Changed Volume "/root"
+#              Added Copy "/root"
+#
 # 2015-07-02 : Init Project
 # -----------------------------------------------------------------------------
 
@@ -36,10 +38,9 @@ RUN \
     apt-get -y install mc
     
 RUN \
-    mkdir /etc/symcon.org &&\
-    mkdir /usr/share/symcon.org &&\
-    cp -R /etc/symcon/* /etc/symcon.org/ &&\
-    cp -R /usr/share/symcon/* /usr/share/symcon.org/
+    cp -R /etc/symcon /etc/symcon.org &&\
+    cp -R /usr/share/symcon /usr/share/symcon.org &&\
+    cp -R /root /root.org
     
 #Clean-Up    
 RUN \
