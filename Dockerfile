@@ -65,7 +65,7 @@ RUN \
 #Ports for IP-Symcon
 #Port 3777  Webinterface and Configuration for IPS
 #Port 5544  Homematic
-EXPOSE 3777 5544
+#EXPOSE 3777 5544
 
 VOLUME \
     /etc/symcon \
