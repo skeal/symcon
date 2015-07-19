@@ -4,7 +4,8 @@
 # docker build -f Dockerfile -t blockmove/symcon .
 #
 #
-# 2015-07-16 : Removed EXPOSE use option --net=2host" instead 
+# 2015-07-19 : Removed Installation of mc
+# 2015-07-16 : Removed EXPOSE use option --net="host" instead 
 # 2015-07-05 : Added Volume "/usr/share/symcon"
 #              Added Copy "/usr/share/symcon"
 #              Changed Volume "/root"
@@ -34,9 +35,6 @@ RUN \
 
 RUN \
     apt-get -y install symcon
-
-RUN \
-    apt-get -y install mc
     
 RUN \
     cp -R /etc/symcon /etc/symcon.org &&\
@@ -62,11 +60,6 @@ RUN echo "Europe/Berlin" > /etc/timezone; dpkg-reconfigure -f noninteractive tzd
 COPY symcon_start.sh /usr/bin/
 RUN \
     chmod 775 /usr/bin/symcon_start.sh
-
-#No Expose (Ports) for IP-Symcon
-#Use option --net="host" for network access 
-#Port 3777  Webinterface and Configuration for IPS
-#Port 5544  Homematic
 
 VOLUME \
     /etc/symcon \
