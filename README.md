@@ -10,7 +10,7 @@ Volumes:
 - /usr/share/symcon
 - /root
 
-No Exposes (Ports) use option --net="Host"
+No Exposes (Ports) use option --net="Host" instead
 
 Example to run image (tested with FS20 and Homematic):
 
@@ -20,3 +20,5 @@ Example to run image (tested with FS20 and Homematic):
 	-v /mnt/data1/@appdata/symcon/share:/usr/share/symcon \
 	--device /dev/ttyUSB0:/dev/ttyUSB0 \
 	blockmove/symcon
+
+[Thread on IP-Symcon Forum](https://www.symcon.de/forum/threads/26294-IP-Symcon-via-Docker-Engine) 
