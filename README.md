@@ -1,13 +1,14 @@
-### Unoffical Docker-Container for IP-Symcon
+### Unoffical Docker-Container for IP-Symcon 4.1
 
 ***
 
-based on Ubuntu 14.04
+based on Ubuntu 16.04
 
 Volumes:
 
-- /etc/symcon
 - /usr/share/symcon
+- /var/lib/symcon
+- /var/log/symcon
 - /root
 
 No Exposes (Ports) use option --net="Host" instead
@@ -15,9 +16,10 @@ No Exposes (Ports) use option --net="Host" instead
 Example to run image (tested with FS20 and Homematic):
 
 	docker run --name symcon --net="host" \
-	-v /mnt/data1/@appdata/symcon/etc:/etc/symcon \
-	-v /mnt/data1/@appdata/symcon/root:/root \
-	-v /mnt/data1/@appdata/symcon/share:/usr/share/symcon \
+	-v /mnt/data/@appdata/symcon/share:/usr/share/symcon \
+	-v /mnt/data/@appdata/symcon/lib:/var/lib/symcon \
+	-v /mnt/data/@appdata/symcon/log:/var/log/symcon \
+	-v /mnt/data/@appdata/symcon/root:/root \
 	--device /dev/ttyUSB0:/dev/ttyUSB0 \
 	blockmove/symcon
 
