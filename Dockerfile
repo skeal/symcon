@@ -3,6 +3,7 @@
 #
 # docker build -f Dockerfile -t blockmove/symcon .
 #
+# 2017-02-18 : Update to IP-Symcon Version 4.1
 #
 # 2015-07-19 : Removed Installation of mc
 # 2015-07-16 : Removed EXPOSE use option --net="host" instead 
@@ -14,7 +15,7 @@
 # 2015-07-02 : Init Project
 # -----------------------------------------------------------------------------
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 MAINTAINER Dieter Poesl <doc@poesl-online.de>
 
@@ -26,19 +27,19 @@ ENV HOME /
 RUN \
     apt-get update &&\
     apt-get -y upgrade &&\
-    apt-get -y install libedit2 php5-cli php5-readline php5-imap wget
+    apt-get -y install wget
     
 RUN \
-    echo "deb [arch=amd64] http://apt.ip-symcon.de/ stable main" >> /etc/apt/sources.list &&\
-    wget -qO - http://apt.ip-symcon.de/symcon.key | apt-key add - &&\
+    echo "deb [arch=amd64] http://apt.symcon.de/ stable ubuntu" >> /etc/apt/sources.list &&\
+    wget -qO - http://apt.symcon.de/symcon.key | apt-key add - &&\
     apt-get update
 
 RUN \
-    apt-get -y install symcon
+    apt-get -y install mc symcon
     
 RUN \
-    cp -R /etc/symcon /etc/symcon.org &&\
     cp -R /usr/share/symcon /usr/share/symcon.org &&\
+    cp -R /var/lib/symcon /var/lib/symcon.org &&\
     cp -R /root /root.org
     
 #Clean-Up    
@@ -53,17 +54,14 @@ RUN \
     locale-gen en_US.UTF-8 &&\
     dpkg-reconfigure locales
 
-#Setup timezone
-#Change for your timezone
-RUN echo "Europe/Berlin" > /etc/timezone; dpkg-reconfigure -f noninteractive tzdata
-
 COPY symcon_start.sh /usr/bin/
 RUN \
     chmod 775 /usr/bin/symcon_start.sh
 
 VOLUME \
-    /etc/symcon \
     /usr/share/symcon \
+    /var/lib/symcon \
+    /var/log/symcon \
     /root
 
 CMD ["/usr/bin/symcon_start.sh"]
