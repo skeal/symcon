@@ -3,7 +3,7 @@
 #
 # docker build -f Dockerfile -t blockmove/symcon .
 #
-# 2017-03-21 : Update to testing Branch 4.2
+# 
 # 2017-02-18 : Update to IP-Symcon Version 4.1
 #
 # 2015-07-19 : Removed Installation of mc
@@ -31,7 +31,7 @@ RUN \
     apt-get -y install wget
     
 RUN \
-    echo "deb [arch=amd64] http://apt.symcon.de/ testing ubuntu" >> /etc/apt/sources.list &&\
+    echo "deb [arch=amd64] http://apt.symcon.de/ stable ubuntu" >> /etc/apt/sources.list &&\
     wget -qO - http://apt.symcon.de/symcon.key | apt-key add - &&\
     apt-get update
 
