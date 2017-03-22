@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
-# blockmove/symcon
+# skeal/symcon
 #
-# docker build -f Dockerfile -t blockmove/symcon .
+# docker build -f Dockerfile -t skeal/symcon .
 #
 # 2017-03-21 : Update to testing Branch 4.2
 # 2017-02-18 : Update to IP-Symcon Version 4.1
@@ -18,7 +18,7 @@
 
 FROM ubuntu:16.04
 
-MAINTAINER Dieter Poesl <doc@poesl-online.de>
+MAINTAINER Thomas Klupp <daklupp@yahoo.com>
 
 # Skip install dialogues
 ENV DEBIAN_FRONTEND noninteractive
