@@ -36,7 +36,7 @@ RUN \
     apt-get update
 
 RUN \
-    apt-get -y install mc symcon
+    apt-get -y install mc symcon locales
     
 RUN \
     cp -R /usr/share/symcon /usr/share/symcon.org &&\
