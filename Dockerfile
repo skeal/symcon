@@ -31,12 +31,12 @@ RUN \
     apt-get -y install wget
     
 RUN \
-    echo "deb [arch=amd64] http://apt.symcon.de/ testing ubuntu" >> /etc/apt/sources.list &&\
+    echo "deb [arch=amd64] http://apt.symcon.de/ ninja ubuntu" >> /etc/apt/sources.list &&\
     wget -qO - http://apt.symcon.de/symcon.key | apt-key add - &&\
     apt-get update
 
 RUN \
-    apt-get -y install mc symcon locales
+    apt-get -y install symcon locales
     
 RUN \
     cp -R /usr/share/symcon /usr/share/symcon.org &&\
