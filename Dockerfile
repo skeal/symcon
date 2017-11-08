@@ -50,19 +50,11 @@ RUN \
     
 #Setup locale
 #Change to your location
-RUN \
-    locale-gen de_DE.UTF-8 &&\
-    locale-gen en_US.UTF-8 &&\
-    dpkg-reconfigure locales
-    
-RUN locale-gen de_DE.UTF-8
-
-COPY ./default_locale /etc/default/locale
-RUN chmod 0755 /etc/default/locale
-
-ENV LC_ALL=de_DE.UTF-8
-ENV LANG=de_DE.UTF-8
-ENV LANGUAGE=de_DE.UTF-8 
+RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen
+ENV LANG de_DE.UTF-8  
+ENV LANGUAGE de_DE:de  
+ENV LC_ALL de_DE.UTF-8  
 
 COPY symcon_start.sh /usr/bin/
 RUN \
