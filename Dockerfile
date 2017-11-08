@@ -49,9 +49,7 @@ RUN \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
     
 #Setup locale
-#Change to your location
-RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-    locale-gen
+RUN locale-gen
 ENV LANG de_DE.UTF-8  
 ENV LANGUAGE de_DE:de  
 ENV LC_ALL de_DE.UTF-8  
