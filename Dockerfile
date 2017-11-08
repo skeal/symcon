@@ -49,7 +49,7 @@ RUN \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
     
 #Setup locale
-RUN locale-gen
+RUN locale-gen de_DE.UTF-8
 ENV LANG de_DE.UTF-8  
 ENV LANGUAGE de_DE:de  
 ENV LC_ALL de_DE.UTF-8  
@@ -63,9 +63,5 @@ VOLUME \
     /var/lib/symcon \
     /var/log/symcon \
     /root
-RUN locale-gen en_US.UTF-8  
-ENV LANG en_US.UTF-8  
-ENV LANGUAGE en_US:en  
-ENV LC_ALL en_US.UTF-8
 
 CMD ["/usr/bin/symcon_start.sh"]
