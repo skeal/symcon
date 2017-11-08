@@ -30,6 +30,15 @@ RUN \
     apt-get -y upgrade &&\
     apt-get -y install wget
     
+RUN locale-gen de_DE.UTF-8
+
+COPY ./default_locale /etc/default/locale
+RUN chmod 0755 /etc/default/locale
+
+ENV LC_ALL=de_DE.UTF-8
+ENV LANG=de_DE.UTF-8
+ENV LANGUAGE=de_DE.UTF-8    
+    
 RUN \
     echo "deb [arch=amd64] http://apt.symcon.de/ testing ubuntu" >> /etc/apt/sources.list &&\
     wget -qO - http://apt.symcon.de/symcon.key | apt-key add - &&\
@@ -64,5 +73,9 @@ VOLUME \
     /var/lib/symcon \
     /var/log/symcon \
     /root
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
 
 CMD ["/usr/bin/symcon_start.sh"]
