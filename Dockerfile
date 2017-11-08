@@ -28,16 +28,7 @@ ENV HOME /
 RUN \
     apt-get update &&\
     apt-get -y upgrade &&\
-    apt-get -y install wget
-    
-RUN locale-gen de_DE.UTF-8
-
-COPY ./default_locale /etc/default/locale
-RUN chmod 0755 /etc/default/locale
-
-ENV LC_ALL=de_DE.UTF-8
-ENV LANG=de_DE.UTF-8
-ENV LANGUAGE=de_DE.UTF-8    
+    apt-get -y install wget   
     
 RUN \
     echo "deb [arch=amd64] http://apt.symcon.de/ testing ubuntu" >> /etc/apt/sources.list &&\
@@ -63,6 +54,15 @@ RUN \
     locale-gen de_DE.UTF-8 &&\
     locale-gen en_US.UTF-8 &&\
     dpkg-reconfigure locales
+    
+RUN locale-gen de_DE.UTF-8
+
+COPY ./default_locale /etc/default/locale
+RUN chmod 0755 /etc/default/locale
+
+ENV LC_ALL=de_DE.UTF-8
+ENV LANG=de_DE.UTF-8
+ENV LANGUAGE=de_DE.UTF-8 
 
 COPY symcon_start.sh /usr/bin/
 RUN \
