@@ -16,18 +16,18 @@
 # 2015-07-02 : Init Project
 # -----------------------------------------------------------------------------
 
-FROM ubuntu:16.04
+FROM phusion/baseimage:latest
 
 MAINTAINER Thomas Klupp <daklupp@yahoo.com>
 
 # Skip install dialogues
-ENV DEBIAN_FRONTEND noninteractive
+# ENV DEBIAN_FRONTEND noninteractive
 # Set Home-Directory
 ENV HOME /
 
 RUN \
-    apt-get update &&\
-    apt-get -y upgrade &&\
+    RUN apt-get update &&\
+    apt-get upgrade -y -o Dpkg::Options::="--force-confold"\
     apt-get -y install wget   
     
 RUN \
@@ -36,7 +36,7 @@ RUN \
     apt-get update
 
 RUN \
-    apt-get -y install mc symcon locales
+    apt-get -y install symcon locales
     
 RUN \
     cp -R /usr/share/symcon /usr/share/symcon.org &&\
