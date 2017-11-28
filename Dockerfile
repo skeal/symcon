@@ -26,7 +26,7 @@ MAINTAINER Thomas Klupp <daklupp@yahoo.com>
 ENV HOME /
 
 RUN \
-    RUN apt-get update &&\
+    apt-get update &&\
     apt-get upgrade -y -o Dpkg::Options::="--force-confold"\
     apt-get -y install wget   
     
