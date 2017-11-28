@@ -16,17 +16,20 @@
 # 2015-07-02 : Init Project
 # -----------------------------------------------------------------------------
 
-FROM ubuntu:16.04
+FROM phusion/baseimage:latest
 
 MAINTAINER Dieter Poesl <doc@poesl-online.de>
 
 # Skip install dialogues
-ENV DEBIAN_FRONTEND noninteractive
+# ENV DEBIAN_FRONTEND noninteractive
 # Set Home-Directory
 ENV HOME /
 
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+    && localedef -i de_DE -c -f UTF-8 -A /usr/share/locale/locale.alias de_DE.UTF-8
+ENV LANG de_DE.utf8
+
 RUN \
-    apt-get update &&\
     apt-get -y upgrade &&\
     apt-get -y install wget
     
@@ -49,11 +52,7 @@ RUN \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
     
 #Setup locale
-#Change to your location
-RUN \
-    locale-gen de_DE.UTF-8 &&\
-    locale-gen en_US.UTF-8 &&\
-    dpkg-reconfigure locales
+
 
 COPY symcon_start.sh /usr/bin/
 RUN \
