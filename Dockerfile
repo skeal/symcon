@@ -2,6 +2,7 @@
 # skeal/symcon
 #
 # docker build -f Dockerfile -t skeal/symcon .
+# 2017-11-29 : Update to testing Branch 4.4
 # 2017-06-28 : Update to testing Branch 4.3
 # 2017-03-21 : Update to testing Branch 4.2
 # 2017-02-18 : Update to IP-Symcon Version 4.1
@@ -16,18 +17,18 @@
 # 2015-07-02 : Init Project
 # -----------------------------------------------------------------------------
 
-FROM phusion/baseimage:latest
+FROM ubuntu:16.04
 
 MAINTAINER Thomas Klupp <daklupp@yahoo.com>
 
 # Skip install dialogues
-# ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND noninteractive
 # Set Home-Directory
 ENV HOME /
 
 RUN \
     apt-get update &&\
-    apt-get upgrade -y -o Dpkg::Options::="--force-confold" &&\
+    apt-get -y upgrade &&\
     apt-get -y install wget   
     
 RUN \
