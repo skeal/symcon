@@ -27,7 +27,7 @@ ENV HOME /
 
 RUN \
     apt-get update &&\
-    apt-get upgrade -y -o Dpkg::Options::="--force-confold"\
+    apt-get upgrade -y -o Dpkg::Options::="--force-confold" &&\
     apt-get -y install wget   
     
 RUN \
