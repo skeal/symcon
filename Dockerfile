@@ -37,7 +37,7 @@ RUN \
     apt-get update
 
 RUN \
-    apt-get -y install symcon locales
+    apt-get -y install locales
 
 #Setup locale
 RUN locale-gen de_DE.UTF-8
@@ -47,6 +47,9 @@ ENV LC_ALL de_DE.UTF-8
 
 RUN \
     apt-get -y install tzdata
+
+RUN \
+    apt-get -y install symcon
 
 RUN \
     cp -R /usr/share/symcon /usr/share/symcon.org &&\
