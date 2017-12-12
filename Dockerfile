@@ -38,7 +38,16 @@ RUN \
 
 RUN \
     apt-get -y install symcon locales
-    
+
+#Setup locale
+RUN locale-gen de_DE.UTF-8
+ENV LANG de_DE.UTF-8  
+ENV LANGUAGE de_DE:de  
+ENV LC_ALL de_DE.UTF-8  
+
+RUN \
+    apt-get -y install tzdata
+
 RUN \
     cp -R /usr/share/symcon /usr/share/symcon.org &&\
     cp -R /var/lib/symcon /var/lib/symcon.org &&\
@@ -49,11 +58,7 @@ RUN \
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
     
-#Setup locale
-RUN locale-gen de_DE.UTF-8
-ENV LANG de_DE.UTF-8  
-ENV LANGUAGE de_DE:de  
-ENV LC_ALL de_DE.UTF-8  
+
 
 COPY symcon_start.sh /usr/bin/
 RUN \
