@@ -2,7 +2,7 @@
 # skeal/symcon
 #
 # docker build -f Dockerfile -t skeal/symcon .
-# 2017-08-07 : Update to stable Branch 4.3
+# 2017-11-29 : Update to stable Branch 4.4
 # 2017-06-28 : Update to testing Branch 4.3
 # 2017-03-21 : Update to testing Branch 4.2
 # 2017-02-18 : Update to IP-Symcon Version 4.1
@@ -29,7 +29,7 @@ ENV HOME /
 RUN \
     apt-get update &&\
     apt-get -y upgrade &&\
-    apt-get -y install wget
+    apt-get -y install wget   
     
 RUN \
     echo "deb [arch=amd64] http://apt.symcon.de/ stable ubuntu" >> /etc/apt/sources.list &&\
@@ -37,8 +37,17 @@ RUN \
     apt-get update
 
 RUN \
-    apt-get -y install mc symcon locales
-    
+    apt-get -y install symcon locales
+
+#Setup locale
+RUN locale-gen de_DE.UTF-8
+ENV LANG de_DE.UTF-8  
+ENV LANGUAGE de_DE:de  
+ENV LC_ALL de_DE.UTF-8  
+
+RUN \
+    apt-get -y install tzdata
+
 RUN \
     cp -R /usr/share/symcon /usr/share/symcon.org &&\
     cp -R /var/lib/symcon /var/lib/symcon.org &&\
@@ -49,12 +58,7 @@ RUN \
     apt-get clean &&\
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
     
-#Setup locale
-#Change to your location
-RUN \
-    locale-gen de_DE.UTF-8 &&\
-    locale-gen en_US.UTF-8 &&\
-    dpkg-reconfigure locales
+
 
 COPY symcon_start.sh /usr/bin/
 RUN \
